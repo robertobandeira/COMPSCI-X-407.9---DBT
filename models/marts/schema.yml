@@ -26,7 +26,7 @@ models:
         tests: [not_null]
 
   - name: fct_order_items
-    description: "Order items fact table at the order-item grain, enriched with product & DC info."
+    description: "Order items fact table at the order-item grain, enriched with product & distribution center info."
     columns:
       - name: order_item_id
         tests: [not_null, unique]
@@ -46,3 +46,29 @@ models:
         tests: [not_null]
       - name: order_date
         tests: [not_null]
+
+  - name: fct_daily_sales
+    description: "Daily ecommerce performance by date, channel, geography, product attributes, and distribution center."
+    columns:
+      - name: date
+        tests: [not_null]
+      - name: traffic_source
+        tests: []
+      - name: orders
+        tests: []
+      - name: gross_revenue
+        tests: []
+      - name: gross_margin
+        tests: []
+
+  - name: fct_daily_events
+    description: "Daily aggregated events and sessions by date, traffic source, state, and event type."
+    columns:
+      - name: date
+        tests: [not_null]
+      - name: event_type
+        tests: [not_null]
+      - name: event_count
+        tests: []
+      - name: sessions
+        tests: []
