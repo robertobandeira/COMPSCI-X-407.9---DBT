@@ -1,9 +1,14 @@
 version: 2
 
 sources:
-  - name: company_data
+  - name: the_look
     database: compsci-x-407-9
-    schema: dbt_demo
+    schema: COMPSCI_407_9_Exercises
     tables:
-      - name: orders
-      - name: customerss
+      - name: thelook_orders
+      - name: thelook_users
+      - name: thelook_products
+      - name: thelook_events
+      - name: thelook_inventory_items
+      - name: thelook_order_items
+      - name: thelook_distribution_centers
