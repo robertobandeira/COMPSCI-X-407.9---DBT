@@ -23,7 +23,7 @@ Make sure all of the following are true **before continuing**.
 
 ## 1.1. JSON service account key
 
-You need a `.json` key file that allows dbt to connect to BigQuery. Roberto will provide that in class.
+You need a `.json` key file that allows dbt to connect to BigQuery. To connect dbt to BigQuery, you’ll need a JSON key for the service account used in this course. Follow these steps: In the Google Cloud Console, go to IAM & Admin → Service Accounts, select the service account Roberto provided (490_dbt_demo), then open the Keys tab. Click “Add Key → Create new key”, choose JSON, and download the file. Save it somewhere on your computer where it won’t be accidentally deleted, such as ~/keys/gcp-sa.json on macOS or C:\Users\<yourname>\keys\gcp-sa.json on Windows. You’ll reference this file in your profiles.yml under the keyfile: field. Never upload or commit this file to GitHub.
 
 Example paths:
 
@@ -174,17 +174,16 @@ dbt_demo:                  # MUST match the `profile:` name in dbt_project.yml
   target: dev
   outputs:
     dev:
-      type: bigquery
-      method: service-account
-      keyfile: <FULL_PATH_TO_YOUR_JSON_KEY>    # absolute path
-      project: compsci-x-407-9                 # your GCP project ID
-      dataset: dbt_demo_dev                    # your BigQuery dataset name
-      location: US                             # must match dataset location
-      threads: 1
-      priority: interactive
+      dataset: dbt_demo_dev              # e.g. feel free to use your own (existing) dataset
       job_execution_timeout_seconds: 300
       job_retries: 1
-      timeout_seconds: 300
+      keyfile: <FULL_PATH_TO_YOUR_JSON_KEY> # e.g. C:\Users\beto_\Downloads\compsci-x-407-9-87abce5b61f7.json
+      location: US
+      method: service-account
+      priority: interactive
+      project: compsci-x-407-9
+      threads: 1
+      type: bigquery
 ```
 
 ### Windows example:
