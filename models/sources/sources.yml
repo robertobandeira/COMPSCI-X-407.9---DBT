@@ -1,0 +1,9 @@
+version: 2
+
+sources:
+  - name: company_data
+    database: compsci-x-407-9
+    schema: dbt_demo
+    tables:
+      - name: orders
+      - name: customerss
